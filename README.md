@@ -39,6 +39,7 @@ All this pre-processing of spatial queries makes SimpliCity hard to re-deploy. C
 * Explore using Jekyll with Angular
   * Using Jeykll's yaml files for configuration could interesting
   * It would be nice to add information about city services in markdown
+* Refactor code into components to bring code base more inline with React and the direction that Angular 2 is moving
 
 ##DATASOURCE
 This is current ArcGIS Server instance used by 
