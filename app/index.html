@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js" id = "ng-app" ng-app="simplicity">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content = "IE=edge">
+    <title>SimpliCity</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- inject:css -->
+    <!-- endinject -->
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.2/leaflet.fullscreen.css' rel='stylesheet' />
+    
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+        <div class="col-xs-12">
+            <div class="col-xs-6">
+                <div class="pull-left" analytics-on="click" analytics-category="Navigation" analytics-event="SimpliCity Logo" ng-click = "goHome()" style = "cursor : pointer">
+                    <h2 style = "color : #073F97;" class = "text-center">SimpliCity</h2>
+                    <h5 class = "text-center">city data simplified</h5>
+                </div>
+                
+            </div>
+            <div class="col-xs-6" style = "margin-top : 10px">
+                <a href="http://www.ashevillenc.gov/" target = "_blank" analytics-category="Navigation" analytics-on="click" analytics-event="City Logo">
+                    <img class = "pull-right" style = "height : 80px;" src="http://123graffitifree.com/images/citylogo-flatblue.png">
+                </a>
+                
+            </div>
+        </div>
+          <div class="col-xs-12" style = "margin-top : 100px; height : 2000px">
+                <h2 class="text-center">You are using an <strong>outdated</strong> browser.</h2>
+                <h3 class = "text-center">SimpliCity requires a modern internet browser like Chrome, Firefox, Opera, Safari, or Internet Explorer 10 (or greater) to provide you with best experience possible. </h3>
+                <h3 class="text-center">Please either switch to a more modern browser listed above, or <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</h3>
+            </div>
+        </div>
+    <![endif]-->
+
+    <div ng-controller = "AppCtrl" class="col-xs-12 container" ng-class = '{back : back}' ui-view>
+      <!-- all views will be injected here -->
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+       
+        ga('create', 'UA-57237551-1', 'auto');
+        //ga('send', 'pageview');
+    </script>
+    
+    <!-- CDNs -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angulartics/0.17.2/angulartics.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angulartics/0.17.2/angulartics-ga.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/1.0.0-rc.3/esri-leaflet.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+
+
+
+
+    <!-- inject:js -->
+    <!-- endinject -->
+
+  </body>
+</html>
