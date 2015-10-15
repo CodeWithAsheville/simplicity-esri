@@ -4,7 +4,7 @@ angular.module('simplicity.google.place.api.adapter', [])
   .constant('PLACES_API_CONFIG', {
       'location' : '35.5951125,-82.5511088',
       'radius' : 80000,
-      'key' : 'AIzaSyDV6CtVSMRpAXBNxGZ9-ClGTA84E4PTsF4'
+      'key' : ''
     })
   .factory('simplicityGooglePlacesApiAdapter', ['$http', '$location', '$q', '$filter', 'PLACES_API_CONFIG',
   function($http, $location, $q, $filter, PLACES_API_CONFIG){
