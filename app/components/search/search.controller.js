@@ -27,7 +27,7 @@ simplicity.controller('SearchCtrl', ['$scope', '$stateParams', '$state', '$timeo
     };
 
     $scope.discoverText = "places";
-    $scope.searchFor = "an address, street, neighborhood, or property";
+    $scope.searchFor = "an address";
 
     var topicProperties = {};
 
