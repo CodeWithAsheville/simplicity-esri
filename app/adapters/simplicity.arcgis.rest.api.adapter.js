@@ -426,13 +426,18 @@ angular.module('simplicity.arcgis.rest.api.adapter', [])
       var searchGroups = [];
       var groupOrderPosition = 0;
 
+
+    
+      //!!!! For now its important to keep the groupsObjs around becuase the Google Places 
+      //!!!! results are later being inserted into this object
+
       //Loop over search results and put them into groups by Loc_name
       //see getTabLabel above for keys
       for(var i = 0; i < compositeGeocoderResults.candidates.length; i++){
         var result = {
           'id' :  compositeGeocoderResults.candidates[i].attributes.User_fld,
           'label' : compositeGeocoderResults.candidates[i].attributes.Match_addr,
-          'type' : compositeGeocoderResults.candidates[i].attributes.Loc_name,
+          'type' : 'address',
           'googleResult' : false
         };
         if(groupsObj[result.type] === undefined){
@@ -440,8 +445,8 @@ angular.module('simplicity.arcgis.rest.api.adapter', [])
             'name' : result.type,
             'groupOrder' : groupOrderPosition,
             'offset' : 3,
-            'iconClass' : getIconClass(result.type),
-            'label' : getGroupLabel(result.type),
+            'iconClass' : 'fa-home',
+            'label' : 'Addresses',
             'results' : [result]
           };
           groupsObj[result.type] = tempObj;
@@ -461,48 +466,6 @@ angular.module('simplicity.arcgis.rest.api.adapter', [])
         return a.groupOrder - b.groupOrder;
       });
 
-      //if the searchText begins with a number shuffle streets and addresses if needed
-      if(searchGroups[0] !== undefined){
-        if(searchGroups[1] !== undefined){
-          //the ESRI geocoder gives precendence to streets over addresses
-          //if there are both streets and address results and the search text begins with a number
-          //move addresses to the first tab position
-          if(searchGroups[0].name === 'street_name' && searchGroups[1].name === 'address' && !isNaN(Number(searchText[0]))){
-            var tempAddressArray = searchGroups[1];
-            searchGroups.splice(1,1);
-            searchGroups.splice(0,0,tempAddressArray);
-          }
-          if(searchGroups[1].name === 'street_name' && searchGroups[0].name === 'address' && isNaN(Number(searchText[0]))){
-            var tempStreetArray = searchGroups[1];
-            searchGroups.splice(1,1);
-            searchGroups.splice(0,0,tempStreetArray);
-          }
-        }
-      }
-
-      //Owners can own multiple properties and streets can have multiple centerline ids
-      //This makes the geocoder results appear to have duplicates
-      //We'll group by label and concat the ids stored in the id into the id of the 
-      //grouped object seperated by commas
-      for (var j = 0; j < searchGroups.length; j++) {
-        if(searchGroups[j].name === 'owner_name' || searchGroups[j].name === 'street_name'){
-          var tObj = {};
-          for (var b = 0; b < searchGroups[j].results.length; b++) {
-            if(tObj[searchGroups[j].results[b].label] === undefined){
-              tObj[searchGroups[j].results[b].label] = searchGroups[j].results[b];
-              tObj[searchGroups[j].results[b].label].id = searchGroups[j].results[b].id;
-            }else{
-              tObj[searchGroups[j].results[b].label].id += "," + searchGroups[j].results[b].id;
-            } 
-          }
-
-          var tempTabArray = [];
-          for(var y in tObj){
-            tempTabArray.push(tObj[y]);
-          }
-          searchGroups[j].results = tempTabArray;
-        }            
-      }
 
       return searchGroups;
     };//END formatEsriCompositeGeocoderResults function
@@ -514,8 +477,8 @@ angular.module('simplicity.arcgis.rest.api.adapter', [])
 
       //define query parameters
       var params = {
-        'SingleLine' : searchText,
-        'outFields' : 'Match_addr, User_fld, Loc_name',
+        'Single Line Input' : searchText,
+        'outFields' : '*',
         'f' : 'json'
       };
       

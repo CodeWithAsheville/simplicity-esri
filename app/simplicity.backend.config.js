@@ -42,7 +42,7 @@ angular.module('simplicity.backend.config', ['simplicity.arcgis.rest.api.adapter
     }
   })
   .constant('SEARCH_CONFIG', {
-    'searchUrl' : 'http://arcgis-arcgisserver1-1222684815.us-east-1.elb.amazonaws.com/arcgis/rest/services/coa_composite_locator/GeocodeServer/findAddressCandidates',
+    'searchUrl' : 'http://arcgis-arcgisserver1-1222684815.us-east-1.elb.amazonaws.com/arcgis/rest/services/coa_address_loc/GeocodeServer/findAddressCandidates',
     'returnFields' : ['Match_addr', 'User_fld', 'Loc_name'],
     'searchEngine' : 'ArcGisRestApiGeocoder'
   })
