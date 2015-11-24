@@ -369,7 +369,7 @@ simplicity.controller('TopicSingleCtrl', ['$scope', '$stateParams', '$state', '$
 
 
     var generateCsvForDownload = function(downloadType, topic){
-
+      var encodedUri;
       var csvString =  'data:text/text;charset=utf-8,';
 
       if(downloadType === 'summary'){
@@ -378,7 +378,7 @@ simplicity.controller('TopicSingleCtrl', ['$scope', '$stateParams', '$state', '$
           var summaryItemString = key + ',' + topic.summary.table[key].count;
           csvString += summaryItemString + '\n';
         }
-        var encodedUri = encodeURI(csvString);
+        encodedUri = encodeURI(csvString);
         
         return encodedUri;
       }else if (downloadType === 'complete'){
@@ -454,7 +454,7 @@ simplicity.controller('TopicSingleCtrl', ['$scope', '$stateParams', '$state', '$
           csvString += rowArray.join(',') + '\n';
         }
 
-        var encodedUri = encodeURI(csvString);
+        encodedUri = encodeURI(csvString);
         //window.open(encodedUri);
         return encodedUri;
       }
