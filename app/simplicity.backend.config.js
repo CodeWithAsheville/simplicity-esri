@@ -93,9 +93,8 @@ angular.module('simplicity.backend.config', ['simplicity.arcgis.rest.api.adapter
                 //if I allow multiple dataApis, I won't be able to inject adapters as a generic simplicityAdapter
                 q.resolve(simplicityAdapter.formatHttpResults(httpResults));
               });
-          })
+          });
         
-
         return q.promise;
       };
 
@@ -103,10 +102,10 @@ angular.module('simplicity.backend.config', ['simplicity.arcgis.rest.api.adapter
         var q = $q.defer();
         var queryTemplate = QUERIES[table][$stateParams.searchby];
         
-          q.resolve(queryTemplate)
+          q.resolve(queryTemplate);
                 
         return q.promise;
-      }
+      };
 
       simplicityBackend.simplicityQuerySpecial = function(table, queryValues){
         var q = $q.defer();
@@ -118,11 +117,10 @@ angular.module('simplicity.backend.config', ['simplicity.arcgis.rest.api.adapter
         simplicityHttp.buildQueryParamsAndMakeGetRequest(queryTemplate, queryValues)
           .then(function(data){
             q.resolve(simplicityAdapter.formatHttpResults( data));
-          })
+          });
           
         //var queryParams = simplicityHttp.buildQueryParams(queryTemplate, queryValues);
-        
-        
+           
         return q.promise;
       };
 

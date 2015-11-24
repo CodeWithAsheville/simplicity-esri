@@ -127,12 +127,12 @@ simplicity.factory('Crime', ['$http', '$location', '$q', '$filter', '$stateParam
           simplicityBackend.simplicityQuery('crimes', queryValues)
             .then(function(data){
               q.resolve(data);
-            })
+            });
 
         });
 
         return q.promise;
-    }
+    };
 
 
     var makeMultipleRequests = function(arrayOfArraysContainingCrimeIds){    
@@ -145,9 +145,9 @@ simplicity.factory('Crime', ['$http', '$location', '$q', '$filter', '$stateParam
         if(queryParamsArray.length === arrayOfArraysContainingCrimeIds.length){
           return $q.all(queryParamsArray);
         }
-      };
+      }
       
-    }
+    };
 
 
     var formatCrimeData = function(crimes){
@@ -249,13 +249,13 @@ simplicity.factory('Crime', ['$http', '$location', '$q', '$filter', '$stateParam
                     var combinedGeoJson = {
                       'features' : [],
                       'type' : "FeatureCollection"
-                    }
+                    };
                     for (var m = 0; m < multipleRequestsResults.length; m++) {
                       for (var f = 0; f < multipleRequestsResults[m].features.length; f++) {
                         combinedGeoJson.features.push(multipleRequestsResults[m].features[f]);
-                      };
+                      }
                       
-                    };
+                    }
                     q.resolve(formatCrimeData(combinedGeoJson) ); 
                     
                     

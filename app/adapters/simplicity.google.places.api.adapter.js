@@ -9,17 +9,13 @@ angular.module('simplicity.google.place.api.adapter', [])
   .factory('simplicityGooglePlacesApiAdapter', ['$http', '$location', '$q', '$filter', 'PLACES_API_CONFIG',
   function($http, $location, $q, $filter, PLACES_API_CONFIG){
     
-
     var simplicityGooglePlacesApiAdapter = {};
-
 
     var service = new google.maps.places.PlacesService(document.getElementById('stupid-required-google-input'));
 
     simplicityGooglePlacesApiAdapter.search = function(searchText){
       //use $q promises to handle the http request asynchronously
       var q = $q.defer();
-
-      
 
       var googleCallback = function(results, status){
         if (status === google.maps.places.PlacesServiceStatus.OK) {

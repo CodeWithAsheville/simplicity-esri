@@ -21,6 +21,7 @@
         "app": true,
         "angular": false,
         "L" : true,
-        "$" : true
+        "$" : true,
+        "google" : true
     }
 }
